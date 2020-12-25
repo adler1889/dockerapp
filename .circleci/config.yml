@@ -12,6 +12,9 @@ jobs:
           command: |
             apk add --no-cache py3-pip=20.1.1-r0
             pip3 install --upgrade pip setuptools wheel
+            apk add --no-cache --virtual .build-deps gcc musl-dev \
+            && pip install cython \
+            && apk del .build-deps gcc musl-dev
             pip3 install docker-compose==1.27.4
       - run:
           name: Run tests
