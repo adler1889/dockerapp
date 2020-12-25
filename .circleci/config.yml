@@ -10,12 +10,8 @@ jobs:
       - run:
           name: Install dependencies
           command: |
+            apt-get install gcc
             apk add --no-cache py3-pip=20.1.1-r0
-            apt-get update \
-            && apt-get install -y --no-install-recommends gcc and-build-dependencies \
-            && rm -rf /var/lib/apt/lists/* \
-            && pip install cryptography \
-            && apt-get purge -y --auto-remove gcc and-build-dependencies
             pip3 install docker-compose==1.27.4
       - run:
           name: Run tests
