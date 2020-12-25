@@ -10,8 +10,8 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            pip install gcc7
             apk add --no-cache py-pip=20.1.1-r0
+            pip install gcc7
             pip install docker-compose==1.27.4
       - run:
           name: Run tests
