@@ -8,10 +8,11 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Installing g++
+          command: 'choco install mingw'
+      - run:
           name: Install dependencies
           command: |
-            apt-get install -y yum
-            yum install -y gcc
             apk add --no-cache py3-pip=20.1.1-r0
             pip3 install docker-compose==1.27.4
       - run:
