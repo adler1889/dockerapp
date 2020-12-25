@@ -11,7 +11,8 @@ jobs:
           name: Install dependencies
           command: |
             apk add --no-cache py3-pip=20.1.1-r0
-            python3 -m pip install docker-compose==1.27.4
+            pip3 install --upgrade pip setuptools wheel
+            pip3 install docker-compose==1.27.4
       - run:
           name: Run tests
           command: |
