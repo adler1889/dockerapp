@@ -3,14 +3,15 @@ jobs:
   build:
     working_directory: /dockerapp
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: docker:20.10.1-git
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Install dependencies
           command: |
-            apk add --no-cache py-pip=9.0.0-r1
+            pip install gcc7
+            apk add --no-cache py-pip=20.1.1-r0
             pip install docker-compose==1.27.4
       - run:
           name: Run tests
