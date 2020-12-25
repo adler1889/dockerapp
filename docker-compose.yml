@@ -1,0 +1,10 @@
+version: '3'
+services:
+  dockerapp:
+    build: .            # as the Dockerfiles is residing in the current directory
+    ports:
+      - "5000:5000"     # host port:container port, container port is exposed to host port
+    depends_on:
+      - redis           # - is used for listing
+  redis:
+    image: redis:6.0.9  # redis==3.5.3
