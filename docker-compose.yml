@@ -2,7 +2,7 @@ version: '3'
 services:
   dockerapp:
     build: .            # as the Dockerfiles is residing in the current directory
-    #image: adler1889/dockerapp:b4021a63d5595af12fcb4b0039556a932f7e1e78   # as the image is uploaded to dockerhub already
+    #image: adler1889/dockerapp:latest   # as the image is uploaded to dockerhub already
     ports:
       - "5000:5000"     # host port:container port, container port is exposed to host port
     depends_on:
