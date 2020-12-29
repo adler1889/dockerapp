@@ -1,13 +1,14 @@
 version: '3'
 services:
   dockerapp:
-    build: .            # as the Dockerfiles is residing in the current directory
-    #image: adler1889/dockerapp:latest   # as the image is uploaded to dockerhub already
+    # build: .            # as the Dockerfiles is residing in the current directory
+    image: adler1889/dockerapp:latest   # as the image is uploaded to dockerhub already
     ports:
-      - "5000:5000"     # host port:container port, container port is exposed to host port
+      # - "5000:5000"     # host port:container port, container port is exposed to host port
+      - "5000"
     depends_on:
       - redis           # - is used for listing
-    deploy:
-      replicas: 2
+    # deploy:
+    #   replicas: 1
   redis:
     image: redis:6.0.9  # redis==3.5.3
