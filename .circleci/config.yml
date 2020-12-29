@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            docker-compose up -d
+            docker-compose up -d --scale dockerapp=2  # multiple instance run: docker-compose up -d --scale dockerapp=2
             docker-compose run dockerapp python test.py
       - deploy:
           name: Push application Docker image
