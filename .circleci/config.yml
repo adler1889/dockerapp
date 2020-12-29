@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: /dockerapp
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: $docker_hub_user_id/dockerapp:latest
     steps:
       - checkout
       - setup_remote_docker
@@ -18,11 +18,12 @@ jobs:
           command: |
             docker-compose up -d --scale dockerapp=2  # multiple instance run: docker-compose up -d --scale dockerapp=2
             docker-compose run dockerapp python test.py
+            docker-compose ps     # List containers
       - deploy:
           name: Push application Docker image
           command: |
             docker login -e $docker_hub_email -u $docker_hub_user_id -p $docker_hub_pswd
-            docker push $docker_hub_user_id/dockerapp:latest
+            #docker push $docker_hub_user_id/dockerapp:latest
 
             # For builds from local
             # docker tag dockerapp_dockerapp $docker_hub_user_id/dockerapp:$CIRCLE_SHA1
